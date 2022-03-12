@@ -17,7 +17,7 @@ Roadmap
 ### To do
 
   * `Item` class instance
-  * Transformations (most importantly `map`, `intercalate`, `reverse`)
+  * Transformations (`intercalate`, `reverse`)
   * Case conversions
   * Justification
   * Folds (especially, total `fold1` functions)
