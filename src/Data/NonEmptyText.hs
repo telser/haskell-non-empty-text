@@ -3,13 +3,13 @@
 module Data.NonEmptyText
     ( NonEmptyText
 
-      -- Creation
+      -- * Creation
     , new
     , singleton
     , toText
     , fromText
 
-      -- Basic interface
+      -- * Basic interface
     , cons
     , snoc
     , uncons
@@ -22,22 +22,26 @@ module Data.NonEmptyText
     , Data.NonEmptyText.length
     , Data.NonEmptyText.map
     , isSingleton
+
+    -- * Folds
+    , Data.NonEmptyText.foldl1
+    , Data.NonEmptyText.foldl1'
     ) where
 
-import GHC.Generics (Generic)
 import Control.DeepSeq (NFData)
 import Data.Bifunctor ( bimap )
 import qualified Data.Text as Text
+import GHC.Generics (Generic)
 
-
-data NonEmptyText = NonEmptyText Char Text.Text
-                      deriving (Eq, Ord, NFData, Generic)
+data NonEmptyText =
+  NonEmptyText Char Text.Text
+  deriving (Eq, Ord, NFData, Generic)
 
 instance Show NonEmptyText where
-    show = show . toText
+  show = show . toText
 
 instance Semigroup NonEmptyText where
-    x <> y = append x y
+  x <> y = append x y
 
 -- | /O(1)/ Create a new 'NonEmptyText'
 --
@@ -105,30 +109,32 @@ unsnoc (NonEmptyText h t) =
 -- As opposed to 'Data.Text.head', this is guaranteed to succeed, as the
 -- the text is never empty.
 head :: NonEmptyText -> Char
-head = fst . uncons
-
+head (NonEmptyText h _) = h
+{-# INLINE Data.NonEmptyText.head #-}
 
 -- | /O(1)/ Return the last character of the 'NonEmptyText'
 --
 -- This never fails.
 last :: NonEmptyText -> Char
 last = snd . unsnoc
+{-# INLINE Data.NonEmptyText.last #-}
 
 
 -- | /O(1)/ Return all characters of the 'NonEmptyText' but the first one
 tail :: NonEmptyText -> Text.Text
-tail = snd . uncons
+tail (NonEmptyText _ t ) = t
+{-# INLINE Data.NonEmptyText.tail #-}
 
 
 -- | /O(n)/ Return all character of the 'NonEmptyText' but the last one
 init :: NonEmptyText -> Text.Text
 init = fst . unsnoc
-
+{-# INLINE Data.NonEmptyText.init #-}
 
 -- | /O(n)/ Return the length of the total 'NonEmptyText'.
 length :: NonEmptyText -> Int
 length = (1 +) . Text.length . Data.NonEmptyText.tail
-
+{-# INLINE Data.NonEmptyText.length #-}
 
 -- | /O(n)/ Convert to NonEmptyText to Text.
 --
@@ -142,7 +148,7 @@ toText = uncurry Text.cons . uncons
 -- each element of @t@.
 map :: (Char -> Char) -> NonEmptyText -> NonEmptyText
 map f = uncurry new . bimap f (Text.map f) . uncons
-
+{-# INLINE Data.NonEmptyText.map #-}
 
 -- | /O(n)/ Create a 'NonEmptyText' from 'Data.Text.Text'.
 --
@@ -153,4 +159,15 @@ map f = uncurry new . bimap f (Text.map f) . uncons
 -- >>> fromText ""
 -- Nothing
 fromText :: Text.Text -> Maybe NonEmptyText
-fromText t = Prelude.uncurry NonEmptyText <$> Text.uncons t
+fromText = fmap (uncurry NonEmptyText) . Text.uncons
+
+-- | /O(n)/ 'foldl1' is a left associative fold with no base case, as we know the text cannot be
+-- empty.
+foldl1 :: (Char -> Char -> Char) -> NonEmptyText -> Char
+foldl1 fn (NonEmptyText h t) = Text.foldl fn h t
+{-# INLINE Data.NonEmptyText.foldl1 #-}
+
+-- | /O(n)/ A strict version of 'foldl1'.
+foldl1' :: (Char -> Char -> Char) -> NonEmptyText -> Char
+foldl1' fn (NonEmptyText h t) = Text.foldl' fn h t
+{-# INLINE Data.NonEmptyText.foldl1' #-}
