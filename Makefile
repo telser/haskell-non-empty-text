@@ -1,20 +1,28 @@
 all: setup build test lint
 
+stack-yaml = stack.yaml stack-8.8.4.yaml
+
 .PHONY: setup
 setup:
-	stack setup
-	stack build --dependencies-only --test --no-run-tests
-	stack build hlint weeder
+# This will prefetch/build the required versions of ghc upfront
+.for _stack-yaml in ${stack-yaml}
+	stack --stack-yaml ${_stack-yaml} setup
+.endfor
+# Note: We don't actually need n versions of linting tools though, so only get ones with the default stack.yaml
+	stack build hlint
 
 .PHONY: build
 build:
-	stack build --pedantic --test --no-run-tests
+.for _stack-yaml in ${stack-yaml}
+	stack --stack-yaml ${_stack-yaml} build --pedantic --test --no-run-tests --flag non-empty-text:ci
+.endfor
 
 .PHONY: test
 test:
-	stack test
+.for _stack-yaml in ${stack-yaml}
+	stack --stack-yaml ${_stack-yaml} test --flag non-empty-text:ci
+.endfor
 
 .PHONY: lint
 lint:
 	stack exec hlint .
-	stack exec weeder .

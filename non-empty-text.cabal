@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 58572da8adae859995fbeb37a2c8694c31c363fdbf809f7a31c4e790e2dc4165
+-- hash: f9997b28e8d6ef870ba918458c21a657499c58e2f9ba6bc42b70831c6f041f6c
 
 name:           non-empty-text
 version:        0.2.0
@@ -19,6 +19,8 @@ maintainer:     Trevis Elser <trevis@flipstone.com>
 license:        MIT
 license-file:   LICENSE
 build-type:     Simple
+tested-with:
+    GHC == 8.8.4, GHC == 8.10.7
 
 source-repository head
   type: git
