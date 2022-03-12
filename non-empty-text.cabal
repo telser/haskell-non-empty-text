@@ -1,28 +1,33 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.33.0.
+-- This file has been generated from package.yaml by hpack version 0.34.4.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 926c8c40bf2306e943b5040c428cd908cd31a5f28c9e1e68579d9259207d4685
+-- hash: 58572da8adae859995fbeb37a2c8694c31c363fdbf809f7a31c4e790e2dc4165
 
 name:           non-empty-text
-version:        0.1.1
+version:        0.2.0
 synopsis:       Non empty Data.Text type
 description:    Typesafe thin wrapper around Data.Text to make impossible to be empty (to
                 always hold at least on character)
 category:       Data, Text, NonEmpty
-homepage:       https://github.com/acatton/haskell-non-empty-text#readme
-bug-reports:    https://github.com/acatton/haskell-non-empty-text/issues
-author:         Antoine Catton
-maintainer:     Antoine Catton <devel@antoine.catton.fr>
-license:        OtherLicense
+homepage:       https://github.com/telser/haskell-non-empty-text#readme
+bug-reports:    https://github.com/telser/haskell-non-empty-text/issues
+author:         Antoine Catton, Trevis Elser
+maintainer:     Trevis Elser <trevis@flipstone.com>
+license:        MIT
 license-file:   LICENSE
 build-type:     Simple
 
 source-repository head
   type: git
-  location: https://github.com/acatton/haskell-non-empty-text
+  location: https://github.com/telser/haskell-non-empty-text
+
+flag ci
+  description: More strict ghc options used for development and ci, not intended for end-use.
+  manual: True
+  default: False
 
 library
   exposed-modules:
@@ -31,11 +36,14 @@ library
       Paths_non_empty_text
   hs-source-dirs:
       src
-  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
   build-depends:
       base >=4.8 && <5
     , deepseq >=1.3.0.0 && <1.5
     , text >=1.2 && <3
+  if flag(ci)
+    ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-patterns -Wincomplete-record-updates -Wmissing-local-signatures -Wmissing-export-lists -Wmissing-import-lists -Wnoncanonical-monad-instances -Wredundant-constraints -Wpartial-fields -Wmissed-specialisations -Wno-implicit-prelude -Wno-safe -Wno-unsafe
+  else
+    ghc-options: -Wall -fwarn-incomplete-uni-patterns -fwarn-incomplete-record-updates
   default-language: Haskell2010
 
 test-suite doctest
@@ -44,8 +52,7 @@ test-suite doctest
   other-modules:
       Paths_non_empty_text
   hs-source-dirs:
-      ./.
-  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
+      ./
   build-depends:
       Glob
     , base >=4.8 && <5
@@ -61,7 +68,6 @@ test-suite spec
       Data.NonEmptyTextSpec
   hs-source-dirs:
       test
-  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
   build-depends:
       QuickCheck >=2.10 && <3
     , base >=4.8 && <5
