@@ -1,6 +1,12 @@
 Non Empty Text
 ==============
 
+FreeBSD [![FreeBSD Build Status](https://api.cirrus-ci.com/github/telser/haskell-non-empty-text.svg?task=freebsd_test)](https://cirrus-ci.com/github/telser/haskell-non-empty-text)
+|
+Linux [![Linux Build Status](https://api.cirrus-ci.com/github/telser/haskell-non-empty-text.svg?task=linux_test)](https://cirrus-ci.com/github/telser/haskell-non-empty-text)
+|
+macOS [![macOS Build Status](https://api.cirrus-ci.com/github/telser/haskell-non-empty-text.svg?task=macos_test)](https://cirrus-ci.com/github/telser/haskell-non-empty-text)
+
 Typesafe thin wrapper around `Data.Text` to make impossible to be empty (to
 always hold at least on character)
 

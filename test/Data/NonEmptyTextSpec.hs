@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -Wno-orphans #-}
 module Data.NonEmptyTextSpec (spec) where
 
 import qualified Data.Text as Text
