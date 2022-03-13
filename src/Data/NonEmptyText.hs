@@ -144,7 +144,7 @@ toText :: NonEmptyText -> Text.Text
 toText = uncurry Text.cons . uncons
 
 
--- | /O(n)/ 'map' @f@ @t@ is the 'NonEmptyText' obtained by applying @f@ to
+-- | /O(n)/ 'Data.NonEmptyText.map' @f@ @t@ is the 'NonEmptyText' obtained by applying @f@ to
 -- each element of @t@.
 map :: (Char -> Char) -> NonEmptyText -> NonEmptyText
 map f = uncurry new . bimap f (Text.map f) . uncons
@@ -161,13 +161,13 @@ map f = uncurry new . bimap f (Text.map f) . uncons
 fromText :: Text.Text -> Maybe NonEmptyText
 fromText = fmap (uncurry NonEmptyText) . Text.uncons
 
--- | /O(n)/ 'foldl1' is a left associative fold with no base case, as we know the text cannot be
--- empty.
+-- | /O(n)/ 'Data.NonEmptyText.foldl1' is a left associative fold with no base case, as we know the
+-- text cannot be empty.
 foldl1 :: (Char -> Char -> Char) -> NonEmptyText -> Char
 foldl1 fn (NonEmptyText h t) = Text.foldl fn h t
 {-# INLINE Data.NonEmptyText.foldl1 #-}
 
--- | /O(n)/ A strict version of 'foldl1'.
+-- | /O(n)/ A strict version of 'Data.NonEmptyText.foldl1'.
 foldl1' :: (Char -> Char -> Char) -> NonEmptyText -> Char
 foldl1' fn (NonEmptyText h t) = Text.foldl' fn h t
 {-# INLINE Data.NonEmptyText.foldl1' #-}
