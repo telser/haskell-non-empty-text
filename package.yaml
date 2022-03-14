@@ -7,7 +7,7 @@ description: |
   always hold at least on character)
 author: Antoine Catton, Trevis Elser
 maintainer: Trevis Elser <trevis@flipstone.com>
-github: telser/haskell-non-empty-text
+github: flipstone/haskell-non-empty-text
 license: MIT
 tested-with: GHC == 8.8.4, GHC == 8.10.7
 

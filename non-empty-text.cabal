@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f9997b28e8d6ef870ba918458c21a657499c58e2f9ba6bc42b70831c6f041f6c
+-- hash: 8dc34d868a160ace409b71a8d83ebb5d39eb2d9bb459eddc5c312e32c4c17c57
 
 name:           non-empty-text
 version:        0.2.0
@@ -12,8 +12,8 @@ synopsis:       Non empty Data.Text type
 description:    Typesafe thin wrapper around Data.Text to make impossible to be empty (to
                 always hold at least on character)
 category:       Data, Text, NonEmpty
-homepage:       https://github.com/telser/haskell-non-empty-text#readme
-bug-reports:    https://github.com/telser/haskell-non-empty-text/issues
+homepage:       https://github.com/flipstone/haskell-non-empty-text#readme
+bug-reports:    https://github.com/flipstone/haskell-non-empty-text/issues
 author:         Antoine Catton, Trevis Elser
 maintainer:     Trevis Elser <trevis@flipstone.com>
 license:        MIT
@@ -24,7 +24,7 @@ tested-with:
 
 source-repository head
   type: git
-  location: https://github.com/telser/haskell-non-empty-text
+  location: https://github.com/flipstone/haskell-non-empty-text
 
 flag ci
   description: More strict ghc options used for development and ci, not intended for end-use.
