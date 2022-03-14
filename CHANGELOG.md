@@ -2,6 +2,18 @@
 
 ## Unreleased changes
 
+### Changes since v0.2.0
+
+#### Breaking changes
+
+#### Bug fixes
+
+#### New features
+
+#### Other changes
+
+## v0.2.0
+
 ### Changes since v0.1.1
 
 #### Breaking changes
