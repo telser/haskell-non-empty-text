@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 95fcc25a860d6cb2708abcc82d382ad1453d0e54c9c706639849b389427f36ac
+-- hash: 448ec6bf531f829be85be0970525a7f06b1782272828940305f4f23d5735134d
 
 name:           non-empty-text
 version:        0.2.0
@@ -20,7 +20,7 @@ license:        MIT
 license-file:   LICENSE
 build-type:     Simple
 tested-with:
-    GHC == 8.8.4, GHC == 8.10.7
+    GHC == 8.8.4, GHC == 8.10.7, GHC == 9.0.2
 extra-source-files:
     CHANGELOG.md
 

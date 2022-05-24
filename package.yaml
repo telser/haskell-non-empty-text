@@ -9,7 +9,7 @@ author: Antoine Catton, Trevis Elser
 maintainer: Trevis Elser <trevis@flipstone.com>
 github: flipstone/haskell-non-empty-text
 license: MIT
-tested-with: GHC == 8.8.4, GHC == 8.10.7
+tested-with: GHC == 8.8.4, GHC == 8.10.7, GHC == 9.0.2
 
 flags:
   ci:

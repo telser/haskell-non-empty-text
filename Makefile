@@ -1,6 +1,6 @@
 all: setup build test lint
 
-stack-yaml = stack.yaml stack-8.8.4.yaml
+stack-yaml = stack.yaml stack-8.8.4.yaml stack-8.10.7.yaml
 
 .PHONY: setup
 setup:
