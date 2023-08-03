@@ -1,6 +1,6 @@
 linux_test_task:
   container:
-    image: flipstone/stack:v6-2.7.3
+    image: ghcr.io/flipstone/haskell-tools:debian-unstable-ghc-9.4.5-2023-07-18-1d8bf61
     cpu: 6
     memory: 6G
   stack_cache:
@@ -15,7 +15,7 @@ linux_test_task:
 
 freebsd_test_task:
   freebsd_instance:
-    image_family: freebsd-13-0
+    image_family: freebsd-13-2
     cpu: 6
     memory: 6G
   stack_cache:
@@ -28,7 +28,7 @@ freebsd_test_task:
 
 macos_test_task:
   macos_instance:
-    image: monterey-base
+    image: ventura-base
     cpu: 6
     memory: 6G
   stack_cache:
