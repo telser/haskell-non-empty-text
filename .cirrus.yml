@@ -28,7 +28,7 @@ freebsd_test_task:
 
 macos_test_task:
   macos_instance:
-    image: ventura-base
+    image: ghcr.io/cirruslabs/macos-ventura-base:latest
     cpu: 6
     memory: 6G
   stack_cache:
