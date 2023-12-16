@@ -1,5 +1,5 @@
 name: non-empty-text
-version: 0.2.0
+version: 0.2.1
 category: Data, Text, NonEmpty
 synopsis: Non empty Data.Text type
 description: |
@@ -19,7 +19,7 @@ flags:
 
 dependencies:
   - base >=4.8 && <5
-  - deepseq >=1.3.0.0 && <1.5
+  - deepseq >=1.3.0.0 && <1.6
   - text >=1.2 && <3
 
 extra-source-files:
@@ -56,7 +56,6 @@ library:
           - -Wall
           - -fwarn-incomplete-uni-patterns
           - -fwarn-incomplete-record-updates
-
 
 tests:
   spec:

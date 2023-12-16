@@ -1,13 +1,13 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.4.
+-- This file has been generated from package.yaml by hpack version 0.35.2.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 95fcc25a860d6cb2708abcc82d382ad1453d0e54c9c706639849b389427f36ac
+-- hash: 31f29e2afdc641f83475d8957a7eb8b14f1cb8c80780a100049e72a7ccc91684
 
 name:           non-empty-text
-version:        0.2.0
+version:        0.2.1
 synopsis:       Non empty Data.Text type
 description:    Typesafe thin wrapper around Data.Text to make impossible to be empty (to
                 always hold at least on character)
@@ -42,13 +42,13 @@ library
       src
   build-depends:
       base >=4.8 && <5
-    , deepseq >=1.3.0.0 && <1.5
+    , deepseq >=1.3.0.0 && <1.6
     , text >=1.2 && <3
+  default-language: Haskell2010
   if flag(ci)
     ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-patterns -Wincomplete-record-updates -Wmissing-local-signatures -Wmissing-export-lists -Wmissing-import-lists -Wnoncanonical-monad-instances -Wredundant-constraints -Wpartial-fields -Wmissed-specialisations -Wno-implicit-prelude -Wno-safe -Wno-unsafe
   else
     ghc-options: -Wall -fwarn-incomplete-uni-patterns -fwarn-incomplete-record-updates
-  default-language: Haskell2010
 
 test-suite doctest
   type: exitcode-stdio-1.0
@@ -60,7 +60,7 @@ test-suite doctest
   build-depends:
       Glob
     , base >=4.8 && <5
-    , deepseq >=1.3.0.0 && <1.5
+    , deepseq >=1.3.0.0 && <1.6
     , doctest
     , text >=1.2 && <3
   default-language: Haskell2010
@@ -75,7 +75,7 @@ test-suite spec
   build-depends:
       QuickCheck >=2.10 && <3
     , base >=4.8 && <5
-    , deepseq >=1.3.0.0 && <1.5
+    , deepseq >=1.3.0.0 && <1.6
     , hspec
     , non-empty-text
     , text >=1.2 && <3
